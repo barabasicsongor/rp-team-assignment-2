@@ -7,51 +7,50 @@ import lejos.nxt.SensorPortListener;
 import lejos.robotics.navigation.DifferentialPilot;
 import rp.systems.RobotProgrammingDemo;
 
-public class Part2 extends RobotProgrammingDemo implements SensorPortListener{
+public class Part2 extends RobotProgrammingDemo implements SensorPortListener {
 	private DifferentialPilot pilot;
 	private boolean m_bumped = false;
-	
-	public Part2(){
+
+	public Part2() {
 		SensorPort.S2.addSensorPortListener(this);
 		SensorPort.S3.addSensorPortListener(this);
-		pilot = new DifferentialPilot(0.56, 1, Motor.C, Motor.A); //TODO wheel diameter
+		pilot = new DifferentialPilot(0.56, 1, Motor.C, Motor.A); // TODO wheel
+																	// diameter
 	}
-	
+
 	public static void main(String[] args) {
 		Part2 robot = new Part2();
 		robot.run();
 	}
 
 	@Override
-	public void run()  {
+	public void run() {
 		Button.waitForAnyPress();
-		
-		pilot.forward();
-		while(m_run){
-			if(m_bumped){
-				pilot.stop();
-				pilot.travel(-0.05);
-				pilot.rotate(180);
-				m_bumped = false;
-				pilot.stop();
-				pilot.travel(0.05);
-				pilot.forward();
-				continue;
-			}
-			try{
+
+		try {
+			m_bumped = false;
+			while (m_run) {
+				if (m_bumped) {
+					pilot.stop();
+					pilot.travel(0.5);
+					pilot.rotate(300);
+					m_bumped = false;
+					pilot.stop();
+				}
+				pilot.backward();
 				Thread.sleep(50);
 			}
-			catch(InterruptedException e){}
-			
+		} catch (InterruptedException e) {
+
 		}
-		
+
 		pilot.stop();
 	}
 
 	@Override
 	public void stateChanged(SensorPort aSource, int aOldValue, int aNewValue) {
 		m_bumped = true;
-		
+
 	}
 
 }
