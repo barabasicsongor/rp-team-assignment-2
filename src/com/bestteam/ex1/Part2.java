@@ -14,7 +14,7 @@ public class Part2 extends RobotProgrammingDemo implements SensorPortListener {
 	public Part2() {
 		SensorPort.S2.addSensorPortListener(this);
 		SensorPort.S3.addSensorPortListener(this);
-		pilot = new DifferentialPilot(0.56, 1, Motor.C, Motor.A); // TODO wheel
+		pilot = new DifferentialPilot(0.48, 1.4, Motor.C, Motor.A); // TODO wheel
 																	// diameter
 	}
 
@@ -32,17 +32,15 @@ public class Part2 extends RobotProgrammingDemo implements SensorPortListener {
 			while (m_run) {
 				if (m_bumped) {
 					pilot.stop();
-					pilot.travel(0.5);
-					pilot.rotate(300);
+					pilot.travel(-0.8);
+					pilot.rotate(180);
 					m_bumped = false;
 					pilot.stop();
 				}
-				pilot.backward();
+				pilot.forward();
 				Thread.sleep(50);
 			}
-		} catch (InterruptedException e) {
-
-		}
+		} catch (InterruptedException e) {}
 
 		pilot.stop();
 	}
@@ -50,7 +48,6 @@ public class Part2 extends RobotProgrammingDemo implements SensorPortListener {
 	@Override
 	public void stateChanged(SensorPort aSource, int aOldValue, int aNewValue) {
 		m_bumped = true;
-
 	}
 
 }
