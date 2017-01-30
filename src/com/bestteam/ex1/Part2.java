@@ -14,8 +14,7 @@ public class Part2 extends RobotProgrammingDemo implements SensorPortListener {
 	public Part2() {
 		SensorPort.S2.addSensorPortListener(this);
 		SensorPort.S3.addSensorPortListener(this);
-		pilot = new DifferentialPilot(0.48, 1.4, Motor.C, Motor.A); // TODO wheel
-																	// diameter
+		pilot = new DifferentialPilot(0.48, 1.4, Motor.C, Motor.A);
 	}
 
 	public static void main(String[] args) {
@@ -26,7 +25,7 @@ public class Part2 extends RobotProgrammingDemo implements SensorPortListener {
 	@Override
 	public void run() {
 		Button.waitForAnyPress();
-
+		
 		try {
 			m_bumped = false;
 			while (m_run) {
