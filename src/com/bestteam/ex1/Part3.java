@@ -38,7 +38,7 @@ public class Part3 extends RobotProgrammingDemo implements SensorPortListener {
 		while (m_run) {
 			
 
-			pilot.travel(3, true);
+			pilot.travel(1, true);
 			while (pilot.isMoving() && m_run) {
 
 				if (m_bumped) {
@@ -56,6 +56,16 @@ public class Part3 extends RobotProgrammingDemo implements SensorPortListener {
 				pilot.stop();
 				pilot.rotate(-90);
 				pilot.stop();
+				
+				pilot.travel(3, true);
+				while (pilot.isMoving() && m_run) {
+
+					if (m_bumped) {
+						pilot.stop();
+						pilot.travel(-0.2);
+					}
+				}
+				
 				counter++;
 				
 				m_bumped = false;
@@ -77,7 +87,7 @@ public class Part3 extends RobotProgrammingDemo implements SensorPortListener {
 	}
 
 	private boolean isRightSideFree() {
-		if(distance > 40) {
+		if(distance > 30) {
 //			System.out.println(distance);
 			return true;
 		}
