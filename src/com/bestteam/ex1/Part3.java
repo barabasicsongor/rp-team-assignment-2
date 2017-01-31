@@ -33,7 +33,7 @@ public class Part3 extends RobotProgrammingDemo implements SensorPortListener {
 	public void run() {
 		Button.waitForAnyPress();
 		
-		redirectOutput();
+//		redirectOutput();
 		
 		while (m_run) {
 			
@@ -50,9 +50,9 @@ public class Part3 extends RobotProgrammingDemo implements SensorPortListener {
 			distance = ranger.getDistance();
 
 			Delay.msDelay(500);
-			System.out.println("Counter: " + counter + " --- " + distance);
+//			System.out.println("Counter: " + counter + " --- " + distance);
 			if (counter < 0 && isRightSideFree()) {
-				System.out.println("Turn right");
+//				System.out.println("Turn right");
 				pilot.stop();
 				pilot.rotate(-90);
 				pilot.stop();
@@ -70,7 +70,7 @@ public class Part3 extends RobotProgrammingDemo implements SensorPortListener {
 				
 				m_bumped = false;
 			} else if(m_bumped) {
-				System.out.println("Turn left");
+//				System.out.println("Turn left");
 				pilot.rotate(90);
 				pilot.stop();
 				counter--;
