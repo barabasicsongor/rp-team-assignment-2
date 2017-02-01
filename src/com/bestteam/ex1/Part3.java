@@ -52,6 +52,7 @@ public class Part3 extends RobotProgrammingDemo implements SensorPortListener {
 				pilot.stop();
 				pilot.rotate(-92);
 				pilot.stop();
+				m_bumped = false;
 				pilot.travel(3, true);
 				while (pilot.isMoving() && m_run) {
 					if (m_bumped) {
