@@ -45,7 +45,9 @@ public class Part2 extends RobotProgrammingDemo implements SensorPortListener {
 
 	@Override
 	public void stateChanged(SensorPort aSource, int aOldValue, int aNewValue) {
-		m_bumped = true;
+		if(m_bumped == false && (aOldValue - aNewValue) > 10) {
+			m_bumped = true;
+		}
 	}
 
 }
