@@ -43,18 +43,20 @@ public class Part3 extends RobotProgrammingDemo implements SensorPortListener {
 
 				if (m_bumped) {
 					pilot.stop();
-					pilot.travel(-0.2);
+					pilot.travel(-1);
 				}
 			}
 			
 			distance = ranger.getDistance();
 
-			Delay.msDelay(500);
+			Delay.msDelay(300);
 //			System.out.println("Counter: " + counter + " --- " + distance);
 			if (counter < 0 && isRightSideFree()) {
 //				System.out.println("Turn right");
 				pilot.stop();
-				pilot.rotate(-90);
+				pilot.travel(0.2);
+				pilot.stop();
+				pilot.rotate(-92);
 				pilot.stop();
 				
 				pilot.travel(3, true);
@@ -62,7 +64,7 @@ public class Part3 extends RobotProgrammingDemo implements SensorPortListener {
 
 					if (m_bumped) {
 						pilot.stop();
-						pilot.travel(-0.2);
+						pilot.travel(-1);
 					}
 				}
 				
@@ -71,7 +73,7 @@ public class Part3 extends RobotProgrammingDemo implements SensorPortListener {
 				m_bumped = false;
 			} else if(m_bumped) {
 //				System.out.println("Turn left");
-				pilot.rotate(90);
+				pilot.rotate(92);
 				pilot.stop();
 				counter--;
 				
@@ -87,7 +89,7 @@ public class Part3 extends RobotProgrammingDemo implements SensorPortListener {
 	}
 
 	private boolean isRightSideFree() {
-		if(distance > 30) {
+		if(distance > 25) {
 //			System.out.println(distance);
 			return true;
 		}
