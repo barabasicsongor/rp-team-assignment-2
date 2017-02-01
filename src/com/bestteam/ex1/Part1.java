@@ -12,11 +12,9 @@ public class Part1 implements Runnable {
 
 	@Override
 	public void run() {
-		
 		Button.waitForAnyPress();
 		System.out.println("Hello world");
 		Button.waitForAnyPress();
-		
 	}
 
 }

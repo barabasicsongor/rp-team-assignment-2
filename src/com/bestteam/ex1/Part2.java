@@ -25,7 +25,6 @@ public class Part2 extends RobotProgrammingDemo implements SensorPortListener {
 	@Override
 	public void run() {
 		Button.waitForAnyPress();
-		
 		try {
 			m_bumped = false;
 			while (m_run) {
